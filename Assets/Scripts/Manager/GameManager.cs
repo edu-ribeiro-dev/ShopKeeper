@@ -1,12 +1,18 @@
-using UnityEditor;
-using UnityEditor.SceneManagement;
+using Controller;
+using Model;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+// ReSharper disable ConvertIfStatementToNullCoalescingAssignment
 
 namespace Manager
 {
 	public class GameManager : BaseManager
 	{
+		[field: SerializeField]
+		private PlayerController PlayerPrefab { get; set; }
+
+		private PlayerModel PlayerModelReference { get; set; }
+
 		public static GameManager Instance { get; private set; }
 
 		private void Awake()
@@ -26,6 +32,14 @@ namespace Manager
 		public static void ChangeScene(string sceneName)
 		{
 			SceneManager.LoadSceneAsync(sceneName);
+		}
+
+		public PlayerController InstantiatePlayer()
+		{
+			if (PlayerModelReference == null)
+				PlayerModelReference = new PlayerModel();
+
+			return Instantiate(PlayerPrefab).Init(PlayerModelReference);
 		}
 	}
 }
