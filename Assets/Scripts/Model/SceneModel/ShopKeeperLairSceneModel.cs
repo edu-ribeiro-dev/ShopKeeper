@@ -1,19 +1,6 @@
-using UnityEngine;
-
 namespace Model.SceneModel
 {
-    public class ShopKeeperLairModel : MonoBehaviour
+    public class ShopKeeperLairModel
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }

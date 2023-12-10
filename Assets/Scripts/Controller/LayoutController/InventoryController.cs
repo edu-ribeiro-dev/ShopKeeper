@@ -5,14 +5,14 @@ using View.LayoutView;
 
 namespace Controller.LayoutController
 {
-	public class ShopController : BaseController
+	public class InventoryController : BaseController
 	{
 		[field: SerializeField]
-		private ShopView View { get; set; }
+		private InventoryView View { get; set; }
 
-		private ShopModel Model { get; set; }
+		private InventoryModel Model { get; set; }
 
-		public ShopController Init(Action onBackClicked)
+		public InventoryController Init(Action onBackClicked)
 		{
 			View.Setup(Model, onBackClicked);
 

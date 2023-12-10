@@ -1,3 +1,4 @@
+using Manager;
 using Model;
 using UnityEngine;
 using View;
@@ -17,10 +18,21 @@ namespace Controller.ActorController
 		private ShopKeeperController Init()
 		{
 			Model = new ShopKeeperModel();
-			InteractableController.Init(() => Debug.Log("Action 1"), () => Debug.Log("Action 2"));
+			InteractableController.Init(OpenShop);
 
 			SetInitialized();
 			return this;
+		}
+
+		private void OpenShop()
+		{
+			GameManager.Instance.SceneManager.OpenSceneAdditive("ShopOverlay");
+		}
+
+		public ShopKeeperController InitPreviewMode()
+		{
+			View.SetupPreviewMode("What're ya buyin??");
+			return this; 
 		}
 
 		private void Awake()

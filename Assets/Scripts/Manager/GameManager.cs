@@ -9,7 +9,7 @@ namespace Manager
 	public class GameManager : BaseManager
 	{
 		[field: SerializeField]
-		public static SceneManager SceneManager { get; set; }
+		public SceneManager SceneManager { get; private set; }
 
 		[field: SerializeField]
 		private PlayerController PlayerPrefab { get; set; }
