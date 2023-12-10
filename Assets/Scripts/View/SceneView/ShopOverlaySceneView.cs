@@ -2,6 +2,7 @@ using System;
 using Model.SceneModel;
 using UnityEngine;
 using UnityEngine.UI;
+using View.LayoutView;
 
 namespace View.SceneView
 {
@@ -20,13 +21,19 @@ namespace View.SceneView
 		private CanvasGroup SceneOptionsCanvasGroup { get; set; }
 
 		[field: SerializeField]
-		private Transform ShopKeeperArea { get; set; }
+		private Transform ShopKeeperDummy { get; set; }
 
 		[field: SerializeField]
 		private CanvasGroup ShopCanvasGroup { get; set; }
 
 		[field: SerializeField]
+		private ShopView ShopView { get; set; }
+
+		[field: SerializeField]
 		private CanvasGroup InventoryCanvasGroup { get; set; }
+
+		[field: SerializeField]
+		private InventoryView InventoryView { get; set; }
 
 		private ShopOverlaySceneModel Model { get; set; }
 
@@ -70,23 +77,25 @@ namespace View.SceneView
 		private void ShowSceneOptionsLayout()
 		{
 			Show(SceneOptionsCanvasGroup);
-			ShopKeeperArea.gameObject.SetActive(true);
+			ShopKeeperDummy.gameObject.SetActive(true);
 		}
 
 		private void HideSceneOptionsLayout()
 		{
 			Hide(SceneOptionsCanvasGroup);
-			ShopKeeperArea.gameObject.SetActive(false);
+			ShopKeeperDummy.gameObject.SetActive(false);
 		}
 
 		private void ShowShop()
 		{
 			Show(ShopCanvasGroup);
+			ShopView.Show();
 		}
 
 		private void HideShop()
 		{
 			Hide(ShopCanvasGroup);
+			ShopView.Hide();
 		}
 
 		private void ShowInventory()

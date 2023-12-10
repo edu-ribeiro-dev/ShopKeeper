@@ -24,6 +24,9 @@ namespace Controller.ActorController
 		{
 			CheckInitialized();
 
+			if (Model.IsDummy)
+				return;
+
 			HandleMovementInput();
 			HandleActionInput();
 		}
