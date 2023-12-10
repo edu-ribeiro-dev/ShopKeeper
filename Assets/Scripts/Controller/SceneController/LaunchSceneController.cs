@@ -15,7 +15,7 @@ namespace Controller.SceneController
 
 		private void Start()
 		{
-			GameManager.ChangeScene("ShopKeeperLair");
+			GameManager.SceneManager.ChangeScene("ShopKeeperLair");
 		}
 	}
 }

@@ -1,13 +1,16 @@
 using Controller.ActorController;
 using Model;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 // ReSharper disable ConvertIfStatementToNullCoalescingAssignment
 
 namespace Manager
 {
 	public class GameManager : BaseManager
 	{
+		[field: SerializeField]
+		public static SceneManager SceneManager { get; set; }
+
 		[field: SerializeField]
 		private PlayerController PlayerPrefab { get; set; }
 
@@ -27,11 +30,6 @@ namespace Manager
 			}
 
 			DontDestroyOnLoad(this);
-		}
-
-		public static void ChangeScene(string sceneName)
-		{
-			SceneManager.LoadSceneAsync(sceneName);
 		}
 
 		public PlayerController InstantiatePlayer()
