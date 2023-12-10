@@ -1,8 +1,8 @@
 namespace Model
 {
-	public class PlayerModel
+	public class PlayerModel : BaseModel
 	{
-		private const float DefaultMoveSpeed = 5;
+		private const float DefaultMoveSpeed = 8;
 
 		public float CurrentMoveSpeed { get; private set; }
 

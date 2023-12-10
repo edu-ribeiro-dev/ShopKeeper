@@ -1,4 +1,4 @@
-using Controller;
+using Controller.ActorController;
 using Model;
 using UnityEngine;
 using UnityEngine.SceneManagement;

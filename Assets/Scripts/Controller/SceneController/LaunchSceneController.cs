@@ -1,9 +1,9 @@
 using Manager;
 using UnityEngine;
 
-namespace Controller
+namespace Controller.SceneController
 {
-	public class LaunchScene : BaseController
+	public class LaunchSceneController : BaseController
 	{
 		[field: SerializeField]
 		private GameManager GameManagerPrefab { get; set; }
