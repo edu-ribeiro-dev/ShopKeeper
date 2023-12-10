@@ -655,6 +655,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203705624}
   m_CullTransparentMesh: 1
+--- !u!212 &207991696 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3684284599537976003, guid: 88438f8520adc0741b91977cf624245b, type: 3}
+  m_PrefabInstance: {fileID: 1759917806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &297148438
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,7 +2520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1266268758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2882,6 +2887,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 900, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!212 &1398153267 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3684284604842138743, guid: 88438f8520adc0741b91977cf624245b, type: 3}
+  m_PrefabInstance: {fileID: 1759917806}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1463432262
 GameObject:
   m_ObjectHideFlags: 0
@@ -3320,7 +3330,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <BackButton>k__BackingField: {fileID: 297148442}
+  <HeaderCategoryDisplayText>k__BackingField: {fileID: 1038476763}
   <PlayerDummy>k__BackingField: {fileID: 1759917807}
+  <PlayerDummyHeadSprite>k__BackingField: {fileID: 1398153267}
+  <PlayerDummyTorsoSprite>k__BackingField: {fileID: 207991696}
+  <ChangeClothLeftButton>k__BackingField: {fileID: 1463432266}
+  <ChangeClothRightButton>k__BackingField: {fileID: 1955330302}
+  <ChangeCategoryLeftButton>k__BackingField: {fileID: 1819326588}
+  <ChangeCategoryRightButton>k__BackingField: {fileID: 388958528}
 --- !u!114 &1720156510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3334,6 +3351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <View>k__BackingField: {fileID: 1720156509}
+  <ClothesStock>k__BackingField: {fileID: 11400000, guid: 67e71beec37056d42955fb15b245abaa, type: 2}
   <PlayerDummy>k__BackingField: {fileID: 1759917808}
 --- !u!225 &1720156511
 CanvasGroup:
@@ -3875,9 +3893,9 @@ RectTransform:
   m_Father: {fileID: 879620227}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 230, y: -440}
   m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1901952631
