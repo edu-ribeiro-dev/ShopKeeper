@@ -3,6 +3,7 @@ using Manager;
 using Model.SceneModel;
 using UnityEngine;
 using View.SceneView;
+using ShopOverlaySceneData = Model.SceneModel.ShopOverlaySceneModel.ShopOverlaySceneData;
 
 namespace Controller.SceneController
 {
@@ -49,7 +50,19 @@ namespace Controller.SceneController
 
 		private void OnCloseClicked()
 		{
-			GameManager.Instance.SceneManager.CloseSceneAdditive();
+			CloseScene();
+		}
+
+		private void CloseScene()
+		{
+			if (Model.ClosingScene)
+				return;
+
+			var sceneManager = GameManager.Instance.SceneManager;
+			var sceneData = sceneManager.Model.GetSceneData("ShopOverlay") as ShopOverlaySceneData;
+			sceneData?.OnCloseCallback.Invoke();
+
+			sceneManager.CloseSceneAdditive("ShopOverlay");
 		}
 
 		private void OnInternalBackClicked()

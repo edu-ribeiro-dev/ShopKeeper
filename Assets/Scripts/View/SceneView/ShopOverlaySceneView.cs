@@ -20,6 +20,9 @@ namespace View.SceneView
 		private CanvasGroup SceneOptionsCanvasGroup { get; set; }
 
 		[field: SerializeField]
+		private Transform ShopKeeperArea { get; set; }
+
+		[field: SerializeField]
 		private CanvasGroup ShopCanvasGroup { get; set; }
 
 		[field: SerializeField]
@@ -67,11 +70,13 @@ namespace View.SceneView
 		private void ShowSceneOptionsLayout()
 		{
 			Show(SceneOptionsCanvasGroup);
+			ShopKeeperArea.gameObject.SetActive(true);
 		}
 
 		private void HideSceneOptionsLayout()
 		{
 			Hide(SceneOptionsCanvasGroup);
+			ShopKeeperArea.gameObject.SetActive(false);
 		}
 
 		private void ShowShop()

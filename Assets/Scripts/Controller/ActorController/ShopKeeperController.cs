@@ -2,6 +2,7 @@ using Manager;
 using Model;
 using UnityEngine;
 using View;
+using SceneData = Model.SceneModel.ShopOverlaySceneModel.ShopOverlaySceneData;
 
 namespace Controller.ActorController
 {
@@ -26,7 +27,16 @@ namespace Controller.ActorController
 
 		private void OpenShop()
 		{
-			GameManager.Instance.SceneManager.OpenSceneAdditive("ShopOverlay");
+			if (Model.ShopOpen)
+				return;
+
+			Model.ShopOpen = true;
+			GameManager.Instance.SceneManager.OpenSceneAdditive("ShopOverlay", 
+				new SceneData(() => 
+				{ 
+					Model.SetInteracting(false); 
+					Model.ShopOpen = false; 
+				}));
 		}
 
 		public ShopKeeperController InitPreviewMode()

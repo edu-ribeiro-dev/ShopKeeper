@@ -18,6 +18,8 @@ namespace Model.SceneModel
 		public delegate void OnStateChanged(ShopState newState);
 		public event OnStateChanged OnStateChangedEvent;
 
+		public bool ClosingScene { get; set; }
+
 		public void ChangeShopState(ShopState newState)
 		{
 			if (CurrentState == newState)
@@ -35,6 +37,16 @@ namespace Model.SceneModel
 			};
 
 			OnStateChangedEvent?.Invoke(newState);
+		}
+
+		public class ShopOverlaySceneData : SceneData
+		{
+			public Action OnCloseCallback { get; }
+
+			public ShopOverlaySceneData(Action onCloseCallback)
+			{
+				OnCloseCallback = onCloseCallback;
+			}
 		}
 	}
 }
