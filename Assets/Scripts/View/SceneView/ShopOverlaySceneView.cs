@@ -44,6 +44,9 @@ namespace View.SceneView
 			SellButton.onClick.AddListener(() => onSellClicked());
 			CloseButton.onClick.AddListener(() => onCloseClicked());
 
+			// Hiding sell button as features isn't finished
+			SellButton.gameObject.SetActive(false);
+
 			Model.OnStateChangedEvent += UpdateSceneLayout;
 		}
 
