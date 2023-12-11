@@ -18,7 +18,7 @@ namespace Manager
 		[field: SerializeField]
 		private SkinStockModelSO PlayerDefaultSkinStock { get; set; }
 
-		public PlayerModel PlayerModelReference { get; set; }
+		public PlayerController PlayerReference { get; set; }
 
 		public static GameManager Instance { get; private set; }
 
@@ -38,10 +38,8 @@ namespace Manager
 
 		public PlayerController InstantiatePlayer()
 		{
-			if (PlayerModelReference == null)
-				PlayerModelReference = new PlayerModel(PlayerDefaultSkinStock);
-
-			return Instantiate(PlayerPrefab).Init(PlayerModelReference);
+			PlayerReference = Instantiate(PlayerPrefab).Init(new PlayerModel(PlayerDefaultSkinStock));
+			return PlayerReference;
 		}
 	}
 }

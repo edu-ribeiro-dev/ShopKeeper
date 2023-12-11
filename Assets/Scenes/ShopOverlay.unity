@@ -3329,7 +3329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af524a01c4c6412ebb3043a298b02758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <BackButton>k__BackingField: {fileID: 297148442}
   <HeaderCategoryDisplayText>k__BackingField: {fileID: 1038476763}
   <PlayerDummy>k__BackingField: {fileID: 1759917807}
   <PlayerDummyHeadSprite>k__BackingField: {fileID: 1398153267}
@@ -3338,6 +3337,8 @@ MonoBehaviour:
   <ChangeSkinRightButton>k__BackingField: {fileID: 1955330302}
   <ChangeCategoryLeftButton>k__BackingField: {fileID: 1819326588}
   <ChangeCategoryRightButton>k__BackingField: {fileID: 388958528}
+  <BackButton>k__BackingField: {fileID: 297148442}
+  <BuyButton>k__BackingField: {fileID: 203705628}
 --- !u!114 &1720156510
 MonoBehaviour:
   m_ObjectHideFlags: 0

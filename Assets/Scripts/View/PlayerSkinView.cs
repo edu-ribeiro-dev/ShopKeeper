@@ -15,7 +15,7 @@ namespace View
 
 		public void Setup(PlayerModel playerModel)
 		{
-			Model = new SkinStockModel(playerModel.SkinStock);
+			Model = new SkinStockModel(playerModel.SkinModel.SkinStock);
 			Model.OnCurrentSkinChangedEvent += OnSkinChanged;
 
 			OnSkinChanged();

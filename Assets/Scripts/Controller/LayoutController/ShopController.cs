@@ -31,9 +31,11 @@ namespace Controller.LayoutController
 				OnChangeSkinRightButtonClicked,
 				OnChangeCategoryLeftButtonClicked,
 				OnChangeCategoryRightButtonClicked,
+				OnBuyClicked,
 				onBackClicked);
 
 			PlayerDummy.InitDummy(new PlayerModel(true, SkinStock));
+			UpdateSkinBuyStatus();
 
 			SetInitialized();
 			return this; 
@@ -42,26 +44,44 @@ namespace Controller.LayoutController
 		private void OnChangeSkinLeftButtonClicked()
 		{
 			Model.PreviousSkin();
+			UpdateSkinBuyStatus();
 		}
 
 		private void OnChangeSkinRightButtonClicked()
 		{
 			Model.NextSkin();
+			UpdateSkinBuyStatus();
 		}
 		
 		private void OnChangeCategoryLeftButtonClicked()
 		{
 			Model.PreviousCategory();
+			UpdateSkinBuyStatus();
 		}
 		
 		private void OnChangeCategoryRightButtonClicked()
 		{
 			Model.NextCategory();
+			UpdateSkinBuyStatus();
 		}
 
-		public void OnBuyClicked(SkinSO skinBought)
+		private void UpdateSkinBuyStatus()
 		{
+			var playerRef = GameManager.Instance.PlayerReference;
+			var playerHaveSkin = playerRef.PlayerHaveSkin(Model.GetCurrentSkinForCategory(Model.GetCurrentCategory()),
+				Model.GetCurrentCategory());
 			
+			if (playerHaveSkin)
+				Model.DisableCurrentSkinBuy();
+			else
+				Model.EnableCurrentSkinBuy();
+		}
+
+		private void OnBuyClicked(SkinSO skinBought, SkinStockModel.SkinCategory category)
+		{
+			var player = GameManager.Instance.PlayerReference;
+			player.AddSkin(skinBought, category);
+			UpdateSkinBuyStatus();
 		}
 	}
 }

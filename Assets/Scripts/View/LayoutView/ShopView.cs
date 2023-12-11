@@ -1,6 +1,7 @@
 using System;
 using Model;
 using Model.LayoutModel;
+using Model.ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,9 +10,6 @@ namespace View.LayoutView
 {
 	public class ShopView : BaseView
 	{
-		[field: SerializeField]
-		private Button BackButton { get; set; }
-
 		private ShopModel Model { get; set; }
 
 		[field: SerializeField]
@@ -37,6 +35,12 @@ namespace View.LayoutView
 
 		[field: SerializeField]
 		private Button ChangeCategoryRightButton { get; set; }
+		
+		[field: SerializeField]
+		private Button BackButton { get; set; }
+
+		[field: SerializeField]
+		private Button BuyButton { get; set; }
 
 		private SpriteRenderer CurrentBodyPartSprite { get; set; }
 
@@ -46,18 +50,22 @@ namespace View.LayoutView
 			Action onChangeSkinRightButtonClicked,
 			Action onChangeCategoryLeftButtonClicked,
 			Action onChangeCategoryRightButtonClicked,
+			Action<SkinSO, SkinStockModel.SkinCategory> onBuyClicked,
 			Action onBackClicked)
 		{
 			Model = model;
-			BackButton.onClick.AddListener(() => onBackClicked());
 			ChangeSkinLeftButton.onClick.AddListener(() => onChangeSkinLeftButtonClicked());
 			ChangeSkinRightButton.onClick.AddListener(() => onChangeSkinRightButtonClicked());
 			ChangeCategoryLeftButton.onClick.AddListener(() => onChangeCategoryLeftButtonClicked());
 			ChangeCategoryRightButton.onClick.AddListener(() => onChangeCategoryRightButtonClicked());
+			BuyButton.onClick.AddListener(() => 
+				onBuyClicked(Model.GetCurrentSkinForCategory(Model.GetCurrentCategory()), Model.GetCurrentCategory()));
+			BackButton.onClick.AddListener(() => onBackClicked());
 			Hide();
 
 			Model.OnCurrentCategoryChangedEvent += OnCategoryChanged;
 			Model.OnCurrentSkinChangedEvent += OnSkinChanged;
+			Model.OnCurrentBuySkinStatusChanged += OnCurrentSkinBuyStatusChanged;
 			OnCategoryChanged();
 		}
 
@@ -87,6 +95,12 @@ namespace View.LayoutView
 				return;
 
 			CurrentBodyPartSprite.sprite = currentCategorySkin.Sprite;
+			
+		}
+
+		private void OnCurrentSkinBuyStatusChanged()
+		{
+			BuyButton.interactable = Model.CurrentCanBeBought;
 		}
 
 		public void Show()
@@ -103,6 +117,7 @@ namespace View.LayoutView
 		{
 			Model.OnCurrentCategoryChangedEvent -= OnCategoryChanged;
 			Model.OnCurrentSkinChangedEvent -= OnSkinChanged;
+			Model.OnCurrentBuySkinStatusChanged -= OnCurrentSkinBuyStatusChanged;
 		}
 	}
 }

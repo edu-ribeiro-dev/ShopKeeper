@@ -1,4 +1,5 @@
 using Model;
+using Model.ScriptableObjects;
 using UnityEngine;
 using View;
 
@@ -67,6 +68,21 @@ namespace Controller.ActorController
 						break;
 				}
 			}
+		}
+
+		public void AddSkin(SkinSO newSkin, SkinStockModel.SkinCategory category)
+		{
+			Model.SkinModel.AddSkin(newSkin, category);
+		}
+
+		public void RemoveSkin(SkinSO skinToRemove, SkinStockModel.SkinCategory category)
+		{
+			Model.SkinModel.RemoveSkin(skinToRemove, category);
+		}
+
+		public bool PlayerHaveSkin(SkinSO skin, SkinStockModel.SkinCategory category)
+		{
+			return Model.SkinModel.PlayerContainsSkin(skin, category);
 		}
 	}
 }
