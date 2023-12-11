@@ -5,6 +5,8 @@ namespace Model.SceneModel
 {
 	public class ShopOverlaySceneModel : BaseModel
 	{
+		public ShopOverlaySceneTextModel SceneTextModel { get; set; }
+
 		public enum ShopState
 		{
 			Unknown,
@@ -19,6 +21,13 @@ namespace Model.SceneModel
 		public event OnStateChanged OnStateChangedEvent;
 
 		public bool ClosingScene { get; set; }
+
+		public ShopOverlaySceneModel()
+		{
+			SceneTextModel = new ShopOverlaySceneTextModel();
+			CurrentState = ShopState.Unknown;
+			ClosingScene = false;
+		}
 
 		public void ChangeShopState(ShopState newState)
 		{

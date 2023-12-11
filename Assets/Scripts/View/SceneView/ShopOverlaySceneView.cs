@@ -27,7 +27,7 @@ namespace View.SceneView
 		private CanvasGroup ShopCanvasGroup { get; set; }
 
 		[field: SerializeField]
-		private ShopView ShopView { get; set; }
+		public ShopView ShopView { get; set; }
 
 		[field: SerializeField]
 		private CanvasGroup InventoryCanvasGroup { get; set; }
@@ -77,25 +77,35 @@ namespace View.SceneView
 		private void ShowSceneOptionsLayout()
 		{
 			Show(SceneOptionsCanvasGroup);
+			ShowShopKeeperDummy();
+		}
+
+		public void ShowShopKeeperDummy()
+		{
 			ShopKeeperDummy.gameObject.SetActive(true);
+		}
+
+		public void HideShopKeeperDummy()
+		{
+			ShopKeeperDummy.gameObject.SetActive(false);
 		}
 
 		private void HideSceneOptionsLayout()
 		{
 			Hide(SceneOptionsCanvasGroup);
-			ShopKeeperDummy.gameObject.SetActive(false);
+			HideShopKeeperDummy();
 		}
 
 		private void ShowShop()
 		{
 			Show(ShopCanvasGroup);
-			ShopView.Show();
+			ShopView.ShowPlayerDummy();
 		}
 
 		private void HideShop()
 		{
 			Hide(ShopCanvasGroup);
-			ShopView.Hide();
+			ShopView.HidePlayerDummy();
 		}
 
 		private void ShowInventory()

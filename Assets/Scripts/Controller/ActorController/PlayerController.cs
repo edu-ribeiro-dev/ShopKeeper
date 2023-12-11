@@ -29,7 +29,7 @@ namespace Controller.ActorController
 			return this;
 		}
 
-		public void Update()
+		private void Update()
 		{
 			CheckInitialized();
 
@@ -83,6 +83,11 @@ namespace Controller.ActorController
 		public bool PlayerHaveSkin(SkinSO skin, SkinStockModel.SkinCategory category)
 		{
 			return Model.SkinModel.PlayerContainsSkin(skin, category);
+		}
+
+		public void EquipSkin(SkinSO skin, SkinStockModel.SkinCategory category)
+		{
+			Model.SkinModel.EquipSkin(skin, category);
 		}
 	}
 }

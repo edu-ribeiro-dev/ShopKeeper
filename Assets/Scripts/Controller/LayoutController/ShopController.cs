@@ -82,6 +82,7 @@ namespace Controller.LayoutController
 			var player = GameManager.Instance.PlayerReference;
 			player.AddSkin(skinBought, category);
 			UpdateSkinBuyStatus();
+			player.EquipSkin(skinBought, category);
 		}
 	}
 }

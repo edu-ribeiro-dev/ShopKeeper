@@ -12,24 +12,17 @@ namespace Model
 		public float CurrentMoveSpeed { get; private set; }
 
 		public bool IsDummy { get; set; }
-
-		private PlayerModel()
-		{
-			SkinModel = new PlayerSkinModel(ScriptableObject.CreateInstance<SkinStockModelSO>());
-			CurrentMoveSpeed = 0;
-			IsDummy = false;
-		}
 		
-		public PlayerModel(SkinStockModelSO playerDefaultSkinStock) : this()
+		public PlayerModel(SkinStockModelSO playerDefaultSkinStock)
 		{
 			SkinModel = new PlayerSkinModel(playerDefaultSkinStock);
 			CurrentMoveSpeed = DefaultMoveSpeed;
 		}
 
-		public PlayerModel(bool isDummy, SkinStockModelSO playerDummySkinStock) : this()
+		public PlayerModel(bool isDummy, SkinStockModelSO playerDummySkinStock)
 		{
-			IsDummy = isDummy;
 			SkinModel = new PlayerSkinModel(playerDummySkinStock);
+			IsDummy = isDummy;
 		}
 	}
 }

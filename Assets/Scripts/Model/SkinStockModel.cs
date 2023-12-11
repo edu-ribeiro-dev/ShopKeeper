@@ -19,7 +19,7 @@ namespace Model
 
 		protected int CurrentSkinCategoryIndex { get; set; }
 
-		protected int CurrentSkinIndex { get; set; }
+		protected Dictionary<SkinCategory, int> IndexDict { get; set; }
 
 		protected SkinStockModelSO SkinStockModelSO { get; set; }
 
@@ -35,10 +35,18 @@ namespace Model
 		{
 			SkinStockModelSO = storeStock;
 			CategoryList = new List<SkinCategory>();
-			if (storeStock.HoodList.Count > 0)
+			IndexDict = new Dictionary<SkinCategory, int>();
+			if (SkinStockModelSO.HoodList.Count > 0)
+			{
 				CategoryList.Add(SkinCategory.Hood);
-			if (storeStock.TorsoList.Count > 0)
+				IndexDict.Add(SkinCategory.Hood, 0);
+			}
+
+			if (SkinStockModelSO.TorsoList.Count > 0)
+			{
 				CategoryList.Add(SkinCategory.Torso);
+				IndexDict.Add(SkinCategory.Torso, 0);
+			}
 
 			CurrentSkinCategoryIndex = 0;
 		}
@@ -66,9 +74,9 @@ namespace Model
 		public void NextSkin()
 		{
 			var currentCategory = CategoryList[CurrentSkinCategoryIndex];
-			if (++CurrentSkinIndex > GetStockByCategory(currentCategory).Count - 1)
+			if (++IndexDict[currentCategory] > GetStockByCategory(currentCategory).Count - 1)
 			{
-				CurrentSkinIndex = 0;
+				IndexDict[currentCategory] = 0;
 			}
 
 			OnCurrentSkinChangedEvent?.Invoke();
@@ -77,9 +85,9 @@ namespace Model
 		public void PreviousSkin()
 		{
 			var currentCategory = CategoryList[CurrentSkinCategoryIndex];
-			if (--CurrentSkinIndex < 0)
+			if (--IndexDict[currentCategory] < 0)
 			{
-				CurrentSkinIndex = GetStockByCategory(currentCategory).Count - 1;
+				IndexDict[currentCategory] = GetStockByCategory(currentCategory).Count - 1;
 			}
 
 			OnCurrentSkinChangedEvent?.Invoke();
@@ -103,7 +111,17 @@ namespace Model
 
 		public SkinSO GetCurrentSkinForCategory(SkinCategory category)
 		{
-			return GetStockByCategory(category)[CurrentSkinIndex];
+			var currentSkinIndex = IndexDict[category];
+			return GetStockByCategory(category)[currentSkinIndex];
+		}
+
+		public void EquipSkin(SkinSO skin, SkinCategory category)
+		{
+			var skinsFromCategory = GetStockByCategory(category);
+			var currentSkinIndex = skinsFromCategory.IndexOf(skin);
+			IndexDict[category] = currentSkinIndex;
+
+			OnCurrentSkinChangedEvent?.Invoke();
 		}
 	}
 }

@@ -61,7 +61,7 @@ namespace View.LayoutView
 			BuyButton.onClick.AddListener(() => 
 				onBuyClicked(Model.GetCurrentSkinForCategory(Model.GetCurrentCategory()), Model.GetCurrentCategory()));
 			BackButton.onClick.AddListener(() => onBackClicked());
-			Hide();
+			HidePlayerDummy();
 
 			Model.OnCurrentCategoryChangedEvent += OnCategoryChanged;
 			Model.OnCurrentSkinChangedEvent += OnSkinChanged;
@@ -103,12 +103,12 @@ namespace View.LayoutView
 			BuyButton.interactable = Model.CurrentCanBeBought;
 		}
 
-		public void Show()
+		public void ShowPlayerDummy()
 		{
 			PlayerDummy.gameObject.SetActive(true);
 		}
 
-		public void Hide()
+		public void HidePlayerDummy()
 		{
 			PlayerDummy.gameObject.SetActive(false);
 		}

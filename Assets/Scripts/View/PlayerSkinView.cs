@@ -5,7 +5,7 @@ namespace View
 {
 	public class PlayerSkinView : BaseView
 	{
-		private SkinStockModel Model { get; set; }
+		private PlayerSkinModel Model { get; set; }
 
 		[field: SerializeField]
 		private SpriteRenderer HeadSprite { get; set; }
@@ -15,10 +15,8 @@ namespace View
 
 		public void Setup(PlayerModel playerModel)
 		{
-			Model = new SkinStockModel(playerModel.SkinModel.SkinStock);
+			Model = playerModel.SkinModel;
 			Model.OnCurrentSkinChangedEvent += OnSkinChanged;
-
-			OnSkinChanged();
 		}
 
 		private void OnSkinChanged()

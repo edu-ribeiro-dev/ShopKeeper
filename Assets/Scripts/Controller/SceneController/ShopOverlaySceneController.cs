@@ -20,6 +20,9 @@ namespace Controller.SceneController
 		[field: SerializeField]
 		private InventoryController InventoryController { get; set; }
 
+		[field: SerializeField]
+		private DialogUIController DialogUIController { get; set; }
+
 		private ShopOverlaySceneController Init()
 		{
 			Model = new ShopOverlaySceneModel();
@@ -28,6 +31,13 @@ namespace Controller.SceneController
 			ShopController.Init(OnInternalBackClicked);
 			InventoryController.Init(OnInternalBackClicked);
 			SetDefaultState();
+
+			DialogUIController.Init(
+				OnEquipClicked,
+				OnCloseDialogClicked,
+				Model.SceneTextModel.EquipDialogText,
+				Model.SceneTextModel.EquipDialogMainButtonText,
+				Model.SceneTextModel.EquipDialogSecondaryButtonText);
 
 			SetInitialized();
 			return this;
@@ -73,6 +83,28 @@ namespace Controller.SceneController
 		private void SetDefaultState()
 		{
 			Model.ChangeShopState(ShopOverlaySceneModel.ShopState.SceneOptions);
+		}
+
+		private void ShowEquipDialog()
+		{
+			DialogUIController.Show();
+			View.ShopView.HidePlayerDummy();
+		}
+
+		private void HideEquipDialog()
+		{
+			DialogUIController.Hide();
+			View.ShopView.ShowPlayerDummy();
+		}
+
+		private void OnEquipClicked()
+		{
+			HideEquipDialog();
+		}
+
+		private void OnCloseDialogClicked()
+		{
+			HideEquipDialog();
 		}
 	}
 }
