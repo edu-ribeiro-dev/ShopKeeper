@@ -53,8 +53,6 @@ namespace Controller.ActorController
 
 			if (!interactionButtonPressed)
 				return;
-			
-			Debug.Log("Acted");
 
 			var collidingList = View.GetCollidingObjects();
 			if (collidingList.Count == 0)
