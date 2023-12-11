@@ -3334,8 +3334,8 @@ MonoBehaviour:
   <PlayerDummy>k__BackingField: {fileID: 1759917807}
   <PlayerDummyHeadSprite>k__BackingField: {fileID: 1398153267}
   <PlayerDummyTorsoSprite>k__BackingField: {fileID: 207991696}
-  <ChangeClothLeftButton>k__BackingField: {fileID: 1463432266}
-  <ChangeClothRightButton>k__BackingField: {fileID: 1955330302}
+  <ChangeSkinLeftButton>k__BackingField: {fileID: 1463432266}
+  <ChangeSkinRightButton>k__BackingField: {fileID: 1955330302}
   <ChangeCategoryLeftButton>k__BackingField: {fileID: 1819326588}
   <ChangeCategoryRightButton>k__BackingField: {fileID: 388958528}
 --- !u!114 &1720156510
@@ -3351,7 +3351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <View>k__BackingField: {fileID: 1720156509}
-  <ClothesStock>k__BackingField: {fileID: 11400000, guid: 67e71beec37056d42955fb15b245abaa, type: 2}
+  <SkinStock>k__BackingField: {fileID: 11400000, guid: 67e71beec37056d42955fb15b245abaa, type: 2}
   <PlayerDummy>k__BackingField: {fileID: 1759917808}
 --- !u!225 &1720156511
 CanvasGroup:

@@ -1,7 +1,9 @@
 using System;
 using Controller.ActorController;
+using Manager;
 using Model;
 using Model.LayoutModel;
+using Model.ScriptableObjects;
 using UnityEngine;
 using View.LayoutView;
 
@@ -15,36 +17,36 @@ namespace Controller.LayoutController
 		private ShopModel Model { get; set; }
 		
 		[field: SerializeField]
-		private ClothesStockModelSO ClothesStock { get; set; }
+		private SkinStockModelSO SkinStock { get; set; }
 
 		[field: SerializeField] 
 		private PlayerController PlayerDummy { get; set; }
 
 		public ShopController Init(Action onBackClicked)
 		{
-			Model = new ShopModel(ClothesStock);
+			Model = new ShopModel(SkinStock);
 			
 			View.Setup(Model,
-				OnChangeClothLeftButtonClicked,
-				OnChangeClothRightButtonClicked,
+				OnChangeSkinLeftButtonClicked,
+				OnChangeSkinRightButtonClicked,
 				OnChangeCategoryLeftButtonClicked,
 				OnChangeCategoryRightButtonClicked,
 				onBackClicked);
 
-			PlayerDummy.InitDummy(new PlayerModel(true, ClothesStock));
+			PlayerDummy.InitDummy(new PlayerModel(true, SkinStock));
 
 			SetInitialized();
 			return this; 
 		}
 
-		private void OnChangeClothLeftButtonClicked()
+		private void OnChangeSkinLeftButtonClicked()
 		{
-			Model.PreviousClothes();
+			Model.PreviousSkin();
 		}
 
-		private void OnChangeClothRightButtonClicked()
+		private void OnChangeSkinRightButtonClicked()
 		{
-			Model.NextClothes();
+			Model.NextSkin();
 		}
 		
 		private void OnChangeCategoryLeftButtonClicked()
@@ -57,5 +59,9 @@ namespace Controller.LayoutController
 			Model.NextCategory();
 		}
 
+		public void OnBuyClicked(SkinSO skinBought)
+		{
+			
+		}
 	}
 }

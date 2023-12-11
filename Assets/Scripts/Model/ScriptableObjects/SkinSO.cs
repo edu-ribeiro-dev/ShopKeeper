@@ -1,17 +1,17 @@
 using System;
 using UnityEngine;
 
-namespace Model
+namespace Model.ScriptableObjects
 {
 	[CreateAssetMenu]
-	public class ClothesSO : ScriptableObject
+	public class SkinSO : ScriptableObject
 	{
 		[field: SerializeField]
 		public Sprite Sprite { get; set; }
 
 		public Guid Id { get; }
 
-		public ClothesSO()
+		public SkinSO()
 		{
 			Id = new Guid();
 		}

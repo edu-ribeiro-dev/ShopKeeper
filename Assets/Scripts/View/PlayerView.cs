@@ -9,7 +9,7 @@ namespace View
 		private PlayerModel Model { get; set; }
 
 		[field: SerializeField]
-		private PlayerClothesView ClothesView { get; set; }
+		private PlayerSkinView SkinView { get; set; }
 
 		[field: SerializeField]
 		private Rigidbody2D Rigidbody { get; set; }
@@ -20,7 +20,7 @@ namespace View
 		public void Setup(PlayerModel playerModel)
 		{
 			Model = playerModel;
-			ClothesView.Setup(playerModel);
+			SkinView.Setup(playerModel);
 		}
 
 		public void UpdatePosition(float horizontalInputValue, float verticalInputValue)

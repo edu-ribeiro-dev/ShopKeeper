@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <SceneManager>k__BackingField: {fileID: 2528109575721498515}
   <PlayerPrefab>k__BackingField: {fileID: 1401248448236510970, guid: 88438f8520adc0741b91977cf624245b, type: 3}
-  <PlayerDefaultClothesStock>k__BackingField: {fileID: 11400000, guid: 91dcd8a869c5800409ce2f415920a2ad, type: 2}
+  <PlayerDefaultSkinStock>k__BackingField: {fileID: 11400000, guid: 91dcd8a869c5800409ce2f415920a2ad, type: 2}
 --- !u!114 &2528109575721498515
 MonoBehaviour:
   m_ObjectHideFlags: 0

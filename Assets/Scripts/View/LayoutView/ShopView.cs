@@ -27,10 +27,10 @@ namespace View.LayoutView
 		private SpriteRenderer PlayerDummyTorsoSprite { get; set; }
 		
 		[field: SerializeField]
-		private Button ChangeClothLeftButton { get; set; }
+		private Button ChangeSkinLeftButton { get; set; }
 
 		[field: SerializeField]
-		private Button ChangeClothRightButton { get; set; }
+		private Button ChangeSkinRightButton { get; set; }
 
 		[field: SerializeField]
 		private Button ChangeCategoryLeftButton { get; set; }
@@ -42,22 +42,22 @@ namespace View.LayoutView
 
 		public void Setup(
 			ShopModel model,
-			Action onChangeClothLeftButtonClicked,
-			Action onChangeClothRightButtonClicked,
+			Action onChangeSkinLeftButtonClicked,
+			Action onChangeSkinRightButtonClicked,
 			Action onChangeCategoryLeftButtonClicked,
 			Action onChangeCategoryRightButtonClicked,
 			Action onBackClicked)
 		{
 			Model = model;
 			BackButton.onClick.AddListener(() => onBackClicked());
-			ChangeClothLeftButton.onClick.AddListener(() => onChangeClothLeftButtonClicked());
-			ChangeClothRightButton.onClick.AddListener(() => onChangeClothRightButtonClicked());
+			ChangeSkinLeftButton.onClick.AddListener(() => onChangeSkinLeftButtonClicked());
+			ChangeSkinRightButton.onClick.AddListener(() => onChangeSkinRightButtonClicked());
 			ChangeCategoryLeftButton.onClick.AddListener(() => onChangeCategoryLeftButtonClicked());
 			ChangeCategoryRightButton.onClick.AddListener(() => onChangeCategoryRightButtonClicked());
 			Hide();
 
 			Model.OnCurrentCategoryChangedEvent += OnCategoryChanged;
-			Model.OnCurrentClothesChangedEvent += OnClothChanged;
+			Model.OnCurrentSkinChangedEvent += OnSkinChanged;
 			OnCategoryChanged();
 		}
 
@@ -66,27 +66,27 @@ namespace View.LayoutView
 			HeaderCategoryDisplayText.SetText(Model.GetCurrentCategory().ToString());
 			switch (Model.GetCurrentCategory())
 			{
-				case ClothesStockModel.ClothesCategory.Hood:
+				case SkinStockModel.SkinCategory.Hood:
 					CurrentBodyPartSprite = PlayerDummyHeadSprite;
 					break;
-				case ClothesStockModel.ClothesCategory.Torso:
+				case SkinStockModel.SkinCategory.Torso:
 					CurrentBodyPartSprite = PlayerDummyTorsoSprite;
 					break;
-				case ClothesStockModel.ClothesCategory.Gloves:
+				case SkinStockModel.SkinCategory.Gloves:
 					break;
-				case ClothesStockModel.ClothesCategory.Unknown:
+				case SkinStockModel.SkinCategory.Unknown:
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
 		}
 
-		private void OnClothChanged()
+		private void OnSkinChanged()
 		{
-			var currentCategoryClothesPiece = Model.GetCurrentClothesPieceForCategory(Model.GetCurrentCategory());
-			if (currentCategoryClothesPiece == null)
+			var currentCategorySkin = Model.GetCurrentSkinForCategory(Model.GetCurrentCategory());
+			if (currentCategorySkin == null)
 				return;
 
-			CurrentBodyPartSprite.sprite = currentCategoryClothesPiece.Sprite;
+			CurrentBodyPartSprite.sprite = currentCategorySkin.Sprite;
 		}
 
 		public void Show()
@@ -102,7 +102,7 @@ namespace View.LayoutView
 		private void OnDestroy()
 		{
 			Model.OnCurrentCategoryChangedEvent -= OnCategoryChanged;
-			Model.OnCurrentClothesChangedEvent -= OnClothChanged;
+			Model.OnCurrentSkinChangedEvent -= OnSkinChanged;
 		}
 	}
 }

@@ -5,7 +5,7 @@ namespace Model
 {
 	public class PlayerModel : BaseModel
 	{
-		public ClothesStockModelSO ClothesStock { get; set; }
+		public SkinStockModelSO SkinStock { get; set; }
 
 		private const float DefaultMoveSpeed = 8;
 		
@@ -15,21 +15,21 @@ namespace Model
 
 		private PlayerModel()
 		{
-			ClothesStock = ScriptableObject.CreateInstance<ClothesStockModelSO>();
+			SkinStock = ScriptableObject.CreateInstance<SkinStockModelSO>();
 			CurrentMoveSpeed = 0;
 			IsDummy = false;
 		}
 		
-		public PlayerModel(ClothesStockModelSO playerDefaultClothesStock) : this()
+		public PlayerModel(SkinStockModelSO playerDefaultSkinStock) : this()
 		{
-			ClothesStock = playerDefaultClothesStock;
+			SkinStock = playerDefaultSkinStock;
 			CurrentMoveSpeed = DefaultMoveSpeed;
 		}
 
-		public PlayerModel(bool isDummy, ClothesStockModelSO playerDummyClothesStock) : this()
+		public PlayerModel(bool isDummy, SkinStockModelSO playerDummySkinStock) : this()
 		{
 			IsDummy = isDummy;
-			ClothesStock = playerDummyClothesStock;
+			SkinStock = playerDummySkinStock;
 		}
 	}
 }

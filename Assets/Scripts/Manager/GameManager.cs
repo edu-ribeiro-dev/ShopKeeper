@@ -16,9 +16,9 @@ namespace Manager
 		private PlayerController PlayerPrefab { get; set; }
 
 		[field: SerializeField]
-		private ClothesStockModelSO PlayerDefaultClothesStock { get; set; }
-		
-		private PlayerModel PlayerModelReference { get; set; }
+		private SkinStockModelSO PlayerDefaultSkinStock { get; set; }
+
+		public PlayerModel PlayerModelReference { get; set; }
 
 		public static GameManager Instance { get; private set; }
 
@@ -39,7 +39,7 @@ namespace Manager
 		public PlayerController InstantiatePlayer()
 		{
 			if (PlayerModelReference == null)
-				PlayerModelReference = new PlayerModel(PlayerDefaultClothesStock);
+				PlayerModelReference = new PlayerModel(PlayerDefaultSkinStock);
 
 			return Instantiate(PlayerPrefab).Init(PlayerModelReference);
 		}

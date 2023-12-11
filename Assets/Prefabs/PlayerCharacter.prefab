@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73f47c1b82f0604bae876d353fb6374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <ClothesView>k__BackingField: {fileID: 907664768972400505}
+  <SkinView>k__BackingField: {fileID: 907664768972400505}
   <Rigidbody>k__BackingField: {fileID: 3523817762217938278}
   <InteractionCollider>k__BackingField: {fileID: 4495407585416004034}
 --- !u!114 &1401248448236510970

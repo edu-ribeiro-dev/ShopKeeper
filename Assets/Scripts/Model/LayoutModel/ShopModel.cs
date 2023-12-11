@@ -1,7 +1,7 @@
 namespace Model.LayoutModel
 {
-	public class ShopModel : ClothesStockModel
+	public class ShopModel : SkinStockModel
 	{
-		public ShopModel(ClothesStockModelSO storeStock) : base(storeStock) { }
+		public ShopModel(SkinStockModelSO storeStock) : base(storeStock) { }
 	}
 }
