@@ -6,17 +6,21 @@ namespace View
 {
 	public class PlayerView : BaseView
 	{
+		private PlayerModel Model { get; set; }
+
+		[field: SerializeField]
+		private PlayerClothesView ClothesView { get; set; }
+
 		[field: SerializeField]
 		private Rigidbody2D Rigidbody { get; set; }
 
 		[field: SerializeField]
 		private Collider2D InteractionCollider { get; set; }
 
-		private PlayerModel Model { get; set; }
-
 		public void Setup(PlayerModel playerModel)
 		{
 			Model = playerModel;
+			ClothesView.Setup(playerModel);
 		}
 
 		public void UpdatePosition(float horizontalInputValue, float verticalInputValue)

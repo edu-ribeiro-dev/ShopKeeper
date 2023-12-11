@@ -1,4 +1,5 @@
 using System;
+using Model;
 using Model.LayoutModel;
 using TMPro;
 using UnityEngine;
@@ -65,15 +66,15 @@ namespace View.LayoutView
 			HeaderCategoryDisplayText.SetText(Model.GetCurrentCategory().ToString());
 			switch (Model.GetCurrentCategory())
 			{
-				case ShopModel.ClothesCategory.Hood:
+				case ClothesStockModel.ClothesCategory.Hood:
 					CurrentBodyPartSprite = PlayerDummyHeadSprite;
 					break;
-				case ShopModel.ClothesCategory.Torso:
+				case ClothesStockModel.ClothesCategory.Torso:
 					CurrentBodyPartSprite = PlayerDummyTorsoSprite;
 					break;
-				case ShopModel.ClothesCategory.Gloves:
+				case ClothesStockModel.ClothesCategory.Gloves:
 					break;
-				case ShopModel.ClothesCategory.Unknown:
+				case ClothesStockModel.ClothesCategory.Unknown:
 				default:
 					throw new ArgumentOutOfRangeException();
 			}
@@ -81,7 +82,11 @@ namespace View.LayoutView
 
 		private void OnClothChanged()
 		{
-			CurrentBodyPartSprite.sprite = Model.GetCurrentClothesPiece().Sprite;
+			var currentCategoryClothesPiece = Model.GetCurrentClothesPieceForCategory(Model.GetCurrentCategory());
+			if (currentCategoryClothesPiece == null)
+				return;
+
+			CurrentBodyPartSprite.sprite = currentCategoryClothesPiece.Sprite;
 		}
 
 		public void Show()

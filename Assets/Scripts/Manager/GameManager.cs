@@ -1,5 +1,6 @@
 using Controller.ActorController;
 using Model;
+using Model.LayoutModel;
 using UnityEngine;
 
 // ReSharper disable ConvertIfStatementToNullCoalescingAssignment
@@ -14,6 +15,9 @@ namespace Manager
 		[field: SerializeField]
 		private PlayerController PlayerPrefab { get; set; }
 
+		[field: SerializeField]
+		private ClothesStockModelSO PlayerDefaultClothesStock { get; set; }
+		
 		private PlayerModel PlayerModelReference { get; set; }
 
 		public static GameManager Instance { get; private set; }
@@ -35,7 +39,7 @@ namespace Manager
 		public PlayerController InstantiatePlayer()
 		{
 			if (PlayerModelReference == null)
-				PlayerModelReference = new PlayerModel();
+				PlayerModelReference = new PlayerModel(PlayerDefaultClothesStock);
 
 			return Instantiate(PlayerPrefab).Init(PlayerModelReference);
 		}

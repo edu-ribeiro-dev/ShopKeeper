@@ -37,7 +37,6 @@ namespace Controller.ActorController
 		private void OnInteract()
 		{
 			OnInteractAction?.Invoke();
-			Debug.Log($"Interacted with {transform.parent.name}");
 			OnInteractionEnd();
 		}
 

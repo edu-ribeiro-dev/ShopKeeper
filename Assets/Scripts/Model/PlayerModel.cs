@@ -5,7 +5,6 @@ namespace Model
 {
 	public class PlayerModel : BaseModel
 	{
-		[field: SerializeField]
 		public ClothesStockModelSO ClothesStock { get; set; }
 
 		private const float DefaultMoveSpeed = 8;
@@ -14,15 +13,23 @@ namespace Model
 
 		public bool IsDummy { get; set; }
 
-		public PlayerModel()
+		private PlayerModel()
 		{
-			CurrentMoveSpeed = DefaultMoveSpeed;
+			ClothesStock = ScriptableObject.CreateInstance<ClothesStockModelSO>();
+			CurrentMoveSpeed = 0;
 			IsDummy = false;
 		}
-
-		public PlayerModel(bool isDummy) : this()
+		
+		public PlayerModel(ClothesStockModelSO playerDefaultClothesStock) : this()
 		{
-			IsDummy = true;
-		} 
+			ClothesStock = playerDefaultClothesStock;
+			CurrentMoveSpeed = DefaultMoveSpeed;
+		}
+
+		public PlayerModel(bool isDummy, ClothesStockModelSO playerDummyClothesStock) : this()
+		{
+			IsDummy = isDummy;
+			ClothesStock = playerDummyClothesStock;
+		}
 	}
 }

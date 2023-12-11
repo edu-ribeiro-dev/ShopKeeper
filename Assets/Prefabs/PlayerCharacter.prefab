@@ -903,6 +903,7 @@ GameObject:
   - component: {fileID: 1270495440594865108}
   - component: {fileID: 8654861122932905929}
   - component: {fileID: 1401248448236510970}
+  - component: {fileID: 907664768972400505}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -1006,6 +1007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73f47c1b82f0604bae876d353fb6374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <ClothesView>k__BackingField: {fileID: 907664768972400505}
   <Rigidbody>k__BackingField: {fileID: 3523817762217938278}
   <InteractionCollider>k__BackingField: {fileID: 4495407585416004034}
 --- !u!114 &1401248448236510970
@@ -1021,6 +1023,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <View>k__BackingField: {fileID: 8654861122932905929}
+--- !u!114 &907664768972400505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3590376267830592869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4eaabeda2e847d88c37f99302983254, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <HeadSprite>k__BackingField: {fileID: 3684284604842138743}
+  <TorsoSprite>k__BackingField: {fileID: 3684284599537976003}
 --- !u!1 &3590376268066829913
 GameObject:
   m_ObjectHideFlags: 0

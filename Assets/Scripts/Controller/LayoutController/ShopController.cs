@@ -31,7 +31,7 @@ namespace Controller.LayoutController
 				OnChangeCategoryRightButtonClicked,
 				onBackClicked);
 
-			PlayerDummy.Init(new PlayerModel(true));
+			PlayerDummy.InitDummy(new PlayerModel(true, ClothesStock));
 
 			SetInitialized();
 			return this; 

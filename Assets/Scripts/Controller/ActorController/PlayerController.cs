@@ -16,8 +16,16 @@ namespace Controller.ActorController
 			Model = playerModel;
 			View.Setup(playerModel);
 
-			base.SetInitialized();
+			SetInitialized();
 			return this; 
+		}
+
+		public PlayerController InitDummy(PlayerModel dummyModel)
+		{
+			Model = dummyModel;
+
+			SetInitialized();
+			return this;
 		}
 
 		public void Update()
